@@ -1,6 +1,5 @@
 import express from "express"
 import bcrypt from "bcrypt";
-import { userInfo } from "node:os";
 //=============>create login and register
 const app=express();
 app.use(express.json());
@@ -13,10 +12,8 @@ interface User{
 const Users: User[]=[];
 
 app.get("/",(req,res)=>{
-    
-    res.json(Users);
+    res.status(200).send({message:"welcome!"});
 })
-
 //=============>Register
 app.post("/api/register/",async(req,res)=>{
     try{
@@ -28,13 +25,13 @@ app.post("/api/register/",async(req,res)=>{
             return res.status(400).json({message:"Invalid email"});
         }
         const findMail=Users.find((m)=>m.email===email);
-        // if(findMail){
-        //     return res.status(409).json({message:"Email already exists"});
-        // }
+        if(findMail){
+            return res.status(409).json({message:"Email already exists"});
+        }
         const hashedPassWord = await bcrypt.hash(password,10);
         Users.push({
             id:Users.length+1,
-            name,
+            name:"User",
             email,
             password:hashedPassWord
         });
