@@ -26,8 +26,9 @@ interface User {
   email: string,
   password: string
 }
+```
 
-#-->أهم النقاط المستفادة
+-->أهم النقاط المستفادة
 
 تشفير كلمات المرور مهم جدًا (bcrypt hash).
 
@@ -37,10 +38,10 @@ interface User {
 
 فهم async/await مع try/catch أساسي في backend.
 
-طباعة الأخطاء في التيرمنال أفضل من إخفائها.
-
+طباعة الأخطاء في التيرمنال أفضل من إخفائها
 
 تثبيت الحزم:
+```
 npm install express bcrypt
 npm install -D @types/bcrypt @types/express
 npx ts-node index.ts
